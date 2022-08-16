@@ -24,6 +24,35 @@ private class SetOperationsUtilityTest {
         System.debug('@@@@@ Result @@@@ '+result);
     }
     @IsTest
+    static void testAddAll(){
+        Set<string> a = new Set<string>();
+        Set<string> b = new Set <string> ();
+        a.add('Gokul');
+        a.add('Coimbatore');
+
+        b.add('Cynosure Quest');
+        b.add('Employee Number : CQ002');
+        
+        Set<string> result = SetOperationsUtility.addAll(a,b);
+        System.assertEquals(true,result.contains('Cynosure Quest'));
+        system.debug('@@@@007@@@'+result);
+
+        
+    }
+    @IsTest
+    static void testClear(){
+        Set<string> a = new Set<string>();
+        
+        a.add('Gokul');
+        a.add('Coimbatore');
+
+        Set<string> result = SetOperationsUtility.clear(a);
+        System.assertEquals(false,result.contains('Gokul'));
+        system.debug('@@@@007@@@'+result);
+
+        
+    }
+    @IsTest
     static void testIntersection() {
         Set<Integer> firstSet = new Set<Integer>();
         Set<Integer> secondSet = new Set<Integer>();
@@ -192,6 +221,165 @@ private class SetOperationsUtilityTest {
          system.assertEquals(true,result.contains(393));
         system.assertEquals(false,result.contains(500));
         System.debug('@@@@@ Result @@@@ '+result);
+        
+    }
+    @IsTest
+    static void testEqualls() {
+        Set<Integer> firstSet = new Set<Integer>();
+        Set<Integer> secondSet = new Set<Integer>();
+        firstSet.add(1);
+        firstSet.add(10);
+        firstSet.add(14);
+        firstSet.add(12);
+        firstSet.add(17);
+
+        secondSet.add(1);
+        secondSet.add(10);
+        secondSet.add(14);
+        secondSet.add(12);
+        secondSet.add(17);
+
+        
+        boolean result = SetOperationsUtility.getEqualls(firstSet, secondSet);
+        system.assertEquals(true,result);
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result);
+    }
+    @IsTest
+    static void testHashcode() {
+        Set<Integer> firstSet = new Set<Integer>();
+        
+        /*firstSet.add(1);
+        firstSet.add(10);
+        firstSet.add(14);
+        firstSet.add(12);
+        firstSet.add(17);*/
+
+        
+        
+        Set<Integer> result = SetOperationsUtility.hashcode(firstSet);
+        //system.assertEquals(true,result);
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result);
+    }
+    @IsTest
+    static void testIsEmpty() {
+        Set<Integer> firstSet = new Set<Integer>();
+        
+        /*firstSet.add(1);
+        firstSet.add(10);
+        firstSet.add(14);
+        firstSet.add(12);*/
+        //firstSet.add(17);
+
+        
+        
+        boolean result = SetOperationsUtility.isEmpty(firstSet);
+        system.assertEquals(true,result);
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result);
+    }
+    @IsTest
+    static void testIsRemove() {
+        Set<Integer> firstSet = new Set<Integer>();
+        
+        firstSet.add(1);
+        firstSet.add(10);
+        firstSet.add(14);
+        firstSet.add(12);
+        firstSet.add(17);
+
+        
+        
+        Set<Integer> result = SetOperationsUtility.isRemove(firstSet);
+        system.assertEquals(true,result.contains(10));
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result);
+    }
+    @IsTest
+    static void testRemoveAll(){
+        Set<string> a = new Set<string>();
+        Set<string> b = new Set <string> ();
+        a.add('Gokul');
+        a.add('Coimbatore');
+
+        b.add('Cynosure Quest');
+        b.add('Employee Number : CQ002');
+        
+        Set<string> result = SetOperationsUtility.removeAll(a,b);
+        System.assertEquals(false,result.contains('Cynosure Quest'));
+        system.debug('@@@@007@@@'+result);
+
+        
+    }
+
+    @IsTest
+    static void testRetainAll(){
+        Set<string> a = new Set<string>();
+        Set<string> b = new Set <string> ();
+        a.add('Gokul');
+        a.add('Coimbatore');
+
+        b.add('Cynosure Quest');
+        b.add('Employee Number : CQ002');
+        b.add('Gokul');
+        
+        Set<string> result = SetOperationsUtility.retainAll(a,b);
+        System.assertEquals(false,result.contains('Coimbatore'));
+        system.debug('@@@@007@@@'+result);
+
+        
+    }
+    @IsTest
+    static void testIssize() {
+        Set<Integer> firstSet = new Set<Integer>();
+        
+        firstSet.add(1);
+        firstSet.add(10);
+        firstSet.add(14);
+        firstSet.add(12);
+        firstSet.add(17);
+
+        
+        
+        Set<Integer> result = SetOperationsUtility.size(firstSet);
+        Integer result2=result.size();
+        System.assertEquals(5,result2);
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result2);
+    }
+
+    @IsTest
+    static void testtoString() {
+        Set<String> firstSet = new Set<String>();
+        
+        firstSet.add('Gokul');
+        firstSet.add('Coimbatore');
+        firstSet.add('BSC IT');
+        
+        Set<String> result = SetOperationsUtility.toString123(firstSet);
+        
+        System.assertEquals(true,result.contains('Gokul'));
+       
+        
+        System.debug('@@@@@ Result @@@@ '+result);
+    }
+    @IsTest
+    static void testClone(){
+       Set<string> a = new Set<string>();
+        
+        a.add('Gokul');
+        a.add('Coimbatore');
+
+       Set<string> result =SetOperationsUtility.clone(a);
+        System.assertEquals(true,result.contains('Gokul'));
+        system.debug('Clone Set'+result);
+
         
     }
 }
