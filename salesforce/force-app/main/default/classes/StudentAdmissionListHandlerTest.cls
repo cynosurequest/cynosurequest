@@ -401,11 +401,13 @@ static void testGetLstOfStudentsAnyParentsAReUnemployeed() {
         
         StudentAdmissionListHandler handler = new StudentAdmissionListHandler();
         
-        handler.removeStudentWhoHaveNotGivePermanentAddress(student1);
-          handler.removeStudentWhoHaveNotGivePermanentAddress(student2);
+        handler.addStudentInList(student1);
+          handler.addStudentInList(student2);
          
-        System.debug('@@@@@ 03 @@@@@@ '+JSON.serialize(handler.studentsList));
-         System.assertEquals(1, handler.studentsList.size());
+         List<CynoStudent> result = handler.removeStudentWhoHaveNotGivePermanentAddress();
+
+        System.assertEquals(1, result.size());
+         
 
 }
 @IsTest
@@ -442,12 +444,12 @@ static void testGetLstOfStudentsAnyParentsAReUnemployeed() {
         
         StudentAdmissionListHandler handler = new StudentAdmissionListHandler();
         
-        handler.removeStudentWhoHaveNotGiveCurrentAddress(student1);
-          handler.removeStudentWhoHaveNotGiveCurrentAddress(student2);
+        handler.addStudentInList(student1);
+          handler.addStudentInList(student2);
          
-        System.debug('@@@@@ 02 @@@@@@ '+JSON.serialize(handler.studentsList));
-         System.assertEquals(0, handler.studentsList.size());
+          List<CynoStudent> result = handler.removeStudentWhoHaveNotGiveCurrentAddress();
 
+          System.assertEquals(0, result.size());
 }
 @IsTest
     static void testRemoveStudentWhoseBothParentsAreUnployeed() {
@@ -483,11 +485,12 @@ static void testGetLstOfStudentsAnyParentsAReUnemployeed() {
         
         StudentAdmissionListHandler handler = new StudentAdmissionListHandler();
         
-        handler.removeStudentWhoseBothParentsAreUnployeed(student1);
-          handler.removeStudentWhoseBothParentsAreUnployeed(student2);
+        handler.addStudentInList(student1);
+          handler.addStudentInList(student2);
          
-        System.debug('@@@@@ 01 @@@@@@ '+JSON.serialize(handler.studentsList));
-         System.assertEquals(1, handler.studentsList.size());
+          List<CynoStudent> result = handler.removeStudentWhoseBothParentsAreUnployeed();
+
+          System.assertEquals(1, result.size());
 
 }
 }

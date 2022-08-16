@@ -1,10 +1,10 @@
 public with sharing class StudentAdmissionListHandler {
     public List<CynoStudent> studentsList {get;set;}
-    public Set<CynoStudent> studentsList1 {get;set;}
+    
     
     public StudentAdmissionListHandler() {
         this.studentsList = new List<CynoStudent>();
-        this.studentsList1 = new Set<CynoStudent>();
+        
 
     }
     public void addStudentInList(CynoStudent student) {
@@ -48,6 +48,7 @@ public List<CynoStudent> getLstOfStudsWhoseMotherIsUnEmployed() {
         if (mother.unEmployee == true) {
             newStudentsList.add(student);
             system.debug('@@@34@@@'+newStudentsList);
+            
         }
         
     }
@@ -147,41 +148,56 @@ CynoParent bothParentsAreUnemployeed =CynosureGenericUtility.getRecordWithAnyPar
 return newStudentsList;
 }
 
-public void removeStudentWhoHaveNotGivePermanentAddress(CynoStudent student){
-    if(student.permanentAddress == NULL){
-        this.studentsList.add(student);
-        this.studentsList.remove(0);
-
-    }
-    else{
-        this.studentsList.add(student);
-    }
-    }
-
-    public void removeStudentWhoHaveNotGiveCurrentAddress(CynoStudent student) {
-        if (student.CurrentAddress == NULL) {
-            this.studentsList.add(student);
-            this.studentsList.remove(0);
-        }
-        else{
-            this.studentsList.add(student);
-        }
-        
-    }
+public List<CynoStudent> removeStudentWhoHaveNotGivePermanentAddress() {
+    List<CynoStudent> newList = new List<CynoStudent>();
+    for(CynoStudent student : this.studentsList)
+{
+    CynoAddress perAddress = student.permanentAddress;
     
-    public void removeStudentWhoseBothParentsAreUnployeed(CynoStudent student) {
+    if (perAddress == NULL){
+    newList.add(student);
+    newList.remove(0);
+    }
+    Else{
+        newList.add(student);
+    }
+}
+    return newList;
+}
+
+ public List<CynoStudent> removeStudentWhoHaveNotGiveCurrentAddress() {
+            List<CynoStudent> newList = new List<CynoStudent>();
+            for(CynoStudent student : this.studentsList)
+        {
+            CynoAddress currentAddress = student.currentAddress;
+            
+            if (currentAddress == NULL){
+            newList.add(student);
+            newList.remove(0);
+            }
+            Else{
+                newList.add(student);
+            }
+        }
+            return newList;
+        }
+public List<CynoStudent>  removeStudentWhoseBothParentsAreUnployeed() {
+        List<CynoStudent> newList =  new List<CynoStudent>();
+        for(CynoStudent student : studentsList){
         CynoParent father = student.father;
         CynoParent mother = student.mother;
         
         CynoParent bothParentsAreUnemployeed = CynosureGenericUtility.getRecordWithBothParentsAreUnemployee(mother,father);
     
         if (bothParentsAreUnemployeed == mother){
-            this.studentsList.add(student);
-            this.studentsList.remove(0);
+           newList.add(student);
+            newList.remove(0);
         }
         else{
-            this.studentsList.add(student);
+            newList.add(student);
         }
+    }
+        return newList;
         
     }
     }
