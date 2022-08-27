@@ -1,0 +1,24 @@
+
+<template>
+
+    <template if:true={isManager}>
+        <lightning-card title='Create Leaves (For Employees reporting)'>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input type="Year" label="Enter Year"></lightning-input>
+            </div>
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="id"
+                        data={userList}
+                        columns={columns}>
+                </lightning-datatable>
+            </div>
+            <div>
+                <lightning-button title="Create Timesheet" name="Create Timesheet" value="Create Timesheet"></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+    <lightning-card title='Leave Details'>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,26 @@
+
+<aura:component implements="force:hasRecordId,flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader" access="global" description="LibraryCreateDisplayCmp">
+    <aura:attribute name="isLibraryCardCreated" type="Boolean" default="false"></aura:attribute>
+    <aura:attribute name="firstName" type="String" access="global" />
+    <aura:attribute name="lastName"  type="String" access="global"/>
+    <aura:attribute name="branchName" type="String" access="global"/>
+    <lightning:card title="Library Info">
+        <div class="slds-border_bottom slds-border_top slds-border_left slds-border_right ">
+            <!-- Default/basic -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input value="{!v.firstName}" type="text" label="Enter First Name " placeholder="first name..." ></lightning:input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input  value="{!v.lastName}" type="text" label="Enter Last Name " placeholder="last name..." ></lightning:input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning:input value="{!v.branchName}" type="text" label="Enter Branch Name " placeholder="branch name..." ></lightning:input>
+            </div>
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning:button variant="brand" label="Validate And Save" title="Validate And Save action" onclick="{!c.handleValidateAndSave }" />
+
+        </div>
+
+
+    </lightning:card>
+</aura:component>
